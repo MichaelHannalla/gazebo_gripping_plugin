@@ -25,6 +25,7 @@ namespace gazebo
             return;
         }
         gripper_link_name_ = sdf_->GetElement("gripper_link_name")->Get<std::string>() + "_collision";
+
         // Set initial gripping status 
         attach_ = false;
         joint_created_ = false;
@@ -32,6 +33,7 @@ namespace gazebo
         // Setup ROS subscriber for attaching 
         sub_ = nh_.subscribe("/gripper_attach_cmd", 1, &GazeboGrippingPlugin::attachClbk, this);
 
+        // Log successful plugin loading
         ROS_INFO("[Gripping Plugin] plugin successfully loaded");
 
         // Set the update connection events
